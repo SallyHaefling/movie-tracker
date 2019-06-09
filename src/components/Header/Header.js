@@ -3,10 +3,10 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logOut } from '../../actions';
 
-const Header = (props) => {
+export const Header = (props) => {
 	let toggleLogin;
 	let logUserOut = 
-		<button className='logout btn' onClick={ props.loggedOut }> 		
+		<button className='logout btn' onClick={ props.logOut }> 		
 			<NavLink to='/login' className="nav"> Logout </NavLink>
 		</button>
 	let logUserIn = 
@@ -32,13 +32,13 @@ const Header = (props) => {
 			)
 	}
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
 	loggedIn: state.loggedIn
-})
+});
 
-const mapStateToDispatch = (dispatch) => ({
-	loggedOut: () => dispatch(logOut())
-})
+export const mapDispatchToProps = (dispatch) => ({
+	logOut: () => dispatch(logOut())
+});
 
 
-export default connect(mapStateToProps, mapStateToDispatch)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
